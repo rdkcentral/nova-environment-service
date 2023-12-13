@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  nova-environment-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/app
+      - nova-environment-service-node-modules:/opt/npm
+    working_dir: /usr/src/app
+    ports:
+      - "3001:3001"
+      # node inspect port
+      - "9229:9229"
+    depends_on:
+      - mongo
+    environment:
+      NODE_PORT: 3001
+
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+  mongo-admin:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+
+volumes:
+  mongo-data:
+  nova-environment-service-node-modules:
