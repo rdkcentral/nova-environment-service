@@ -1,0 +1,38 @@
+# Application API
+
+## Variables
+@host=http://localhost:3001
+@appIdentifier=sample-app
+@versionIdentifier=2.4.1
+
+### List all applications
+GET {{host}}/catalogue HTTP/1.1
+content-type: application/json
+
+### List all applications with minimal format
+GET {{host}}/catalogue?format=minimal HTTP/1.1
+content-type: application/json
+
+### Get application by identifier
+GET {{host}}/catalogue/{{appIdentifier}} HTTP/1.1
+content-type: application/json
+
+### Get application by identifier with minimal format
+GET {{host}}/catalogue/{{appIdentifier}}?format=minimal HTTP/1.1
+content-type: application/json
+
+### Get application by identifier with a specific data provider (if there are multiple)
+GET {{host}}/catalogue/{{appIdentifier}}?provider=LOCAL HTTP/1.1
+content-type: application/json
+
+### Get version
+GET {{host}}/catalogue/{{appIdentifier}}/versions/{{versionIdentifier}} HTTP/1.1
+content-type: application/json
+
+### Get application by identifier with minimal format
+GET {{host}}/catalogue/{{appIdentifier}}/versions/{{versionIdentifier}}?format=minimal HTTP/1.1
+content-type: application/json
+
+### Get application by identifier with a specific data provider (if there are multiple)
+GET {{host}}/catalogue/{{appIdentifier}}/versions/{{versionIdentifier}}?provider=LOCAL HTTP/1.1
+content-type: application/json

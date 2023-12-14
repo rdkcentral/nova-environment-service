@@ -1,9 +1,9 @@
 const router = require('express').Router({ mergeParams: true })
 
 router.get('/', require('../endpoints/catalogue/listApplications'))
-router.get('/:id', require('../endpoints/catalogue/getApplication'))
+router.get('/:appIdentifier', require('../endpoints/catalogue/getApplication'))
 router.get(
-  '/:id/version/:version_id',
+  '/:appIdentifier/versions/:versionIdentifier',
   require('../endpoints/catalogue/getVersion')
 )
 
