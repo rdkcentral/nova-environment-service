@@ -10,30 +10,30 @@ services:
       - nova-environment-service-node-modules:/opt/npm
     working_dir: /usr/src/app
     ports:
-      - "3002:3002"
+      - "3001:3001"
     depends_on:
       - mongo
     environment:
-      NODE_PORT: 3002
+      NODE_PORT: 3001
 
-  mongo:
+  mongo-environment:
     image: mongo
     restart: always
     volumes:
-      - mongo-data:/data/db
+      - mongo-environment-data:/data/db
 
-  mongo-admin:
+  mongo-admin-environment:
     image: mongo-express
     restart: always
     ports:
-      - 8082:8082
+      - 8082:8081
     depends_on:
       - mongo
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://mongo-environment:27017/
 
 volumes:
-  mongo-data:
+  mongo-environment-data:
   nova-environment-service-node-modules:
