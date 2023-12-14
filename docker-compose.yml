@@ -10,27 +10,23 @@ services:
       - nova-environment-service-node-modules:/opt/npm
     working_dir: /usr/src/app
     ports:
-      - "3001:3001"
-      # node inspect port
-      - "9229:9229"
+      - "3002:3002"
     depends_on:
       - mongo
     environment:
-      NODE_PORT: 3001
+      NODE_PORT: 3002
 
   mongo:
     image: mongo
     restart: always
     volumes:
       - mongo-data:/data/db
-    ports:
-      - "27017:27017"
 
   mongo-admin:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - 8082:8082
     depends_on:
       - mongo
     environment:

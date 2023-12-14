@@ -6,3 +6,5 @@ router.get(
   '/:id/version/:version_id',
   require('../endpoints/catalogue/getVersion')
 )
+
+module.exports = router
