@@ -3,14 +3,13 @@ const errorResponse = require('../../helpers/errorResponse')
 
 module.exports = async (req, res) => {
   try {
-    const result = await ApplicationModel.delete({
+    // delete the application
+    const result = await ApplicationModel.deleteOne({
       _id: req.params.id,
-    }).catch((e) => {
-      throw new Error('applicationDelete failed', { cause: e })
     })
 
-    // result will be undefined if the application is not found
-    if (result && result.deleted === true) {
+    // return success if the application was deleted (found and deleted)
+    if (result && result.deletedCount === 1) {
       return res.json({
         status: 'success',
       })

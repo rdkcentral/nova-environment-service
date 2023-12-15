@@ -3,6 +3,11 @@ const { validateId } = require('../middlewares/validate')
 
 router.get('/', require('../endpoints/applications/listApplications'))
 router.post('/', require('../endpoints/applications/createApplication'))
+router.get(
+  '/:id',
+  validateId,
+  require('../endpoints/applications/getApplication')
+)
 router.put(
   '/:id',
   validateId,

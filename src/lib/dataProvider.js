@@ -67,6 +67,8 @@ const getApplication = async (
   const url = `${dataBaseUrl}/applications/${appIdentifier}?format=${format}`
   console.log('Requesting:', url)
   const response = await axios.get(url)
+  // add provider
+  response.data.data._provider = providerName
   return response.data.data
 }
 
@@ -81,6 +83,9 @@ const getApplicationVersion = async (
   const url = `${dataBaseUrl}/applications/${appIdentifier}/versions/${versionIdentifier}?format=${format}`
   console.log('Requesting:', url)
   const response = await axios.get(url)
+
+  // add provider
+  response.data.data._provider = providerName
   return response.data.data
 }
 
