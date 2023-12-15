@@ -1,0 +1,44 @@
+# Applications API
+
+## Variables
+@host=http://localhost:3001
+@appIdentifier=sample-app
+@versionIdentifier=2.4.1
+@appId=657c22a16bea2a3b0ed29a3c
+
+### List all applications
+GET {{host}}/applications HTTP/1.1
+content-type: application/json
+
+### List all applications with a specific data provider
+GET {{host}}/applications?provider=LOCAL HTTP/1.1
+content-type: application/json
+
+### Create an application
+POST {{host}}/applications HTTP/1.1
+content-type: application/json
+
+{
+  "identifier": "{{appIdentifier}}",
+  "name": "Sample App",
+  "info": "This is a sample app",
+  "version": "{{versionIdentifier}}",
+  "versionUrl": "https://example.com/sh5s83sda34/21321mas085/",
+  "dataProvider": "LOCAL"
+}
+
+### Get an application
+GET {{host}}/applications/{{appId}} HTTP/1.1
+content-type: application/json
+
+### Update an application
+PUT {{host}}/applications/{{appId}} HTTP/1.1
+content-type: application/json
+
+{
+  "info": "Latest version of SampleApp"
+}
+
+### Delete an application
+DELETE {{host}}/applications/{{appId}} HTTP/1.1
+content-type: application/json

@@ -3,9 +3,12 @@ const errorResponse = require('../../helpers/errorResponse')
 
 module.exports = async (req, res) => {
   try {
-    const data = await ApplicationModel.find({
-      //status: 'active'
-    })
+    let query = {}
+    if (req.query.provider) {
+      query.dataProvider = req.query.provider
+    }
+
+    const data = await ApplicationModel.find(query)
     res.json({
       data,
       status: 'success',
