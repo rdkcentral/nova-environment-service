@@ -90,7 +90,6 @@ const getApplicationVersion = async (
 }
 
 const getProviderBaseUrl = (providerName) => {
-  console.log(providerName)
   if (providerName) {
     if (!Object.keys(dataProviders).includes(providerName)) {
       throw new Error(
