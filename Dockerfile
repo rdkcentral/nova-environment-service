@@ -1,6 +1,6 @@
 FROM node:lts
 
-EXPOSE 3000
+EXPOSE 3001
 
 # set workdir & copy all files
 WORKDIR /usr/src/app

@@ -41,11 +41,5 @@ docker-compose up
 
 #### Managing Database
 
-To access the database, you can use MongoDB Compass or any other MongoDB GUI. The default connection string is `mongodb://localhost:27017/novaUploadService` while Docker Compose services are running.
-
 You can also use the mongo-express service included in the Docker Compose file. To access mongo-express, go to `http://localhost:8081` in your browser. The default username is `root` and the password is `example`.
 
-
-## API Routes
-
-[Routes List](./docs/apiRoutes.md)
